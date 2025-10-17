@@ -1,0 +1,164 @@
+/* Custom Properties for easy color changes */
+:root {
+    --color-purple: #A023FF; /* A deep purple/blue */
+    --color-secondary: #f7f7f7;
+    --color-tertiary: #c7c7c7;
+    --color-text-disabled: rgba(0, 0, 0, 0.38);
+    --color-text-secondary: rgba(0, 0, 0, 0.60);
+    --color-text-primary: rgba(0, 0, 0, 0.80);
+    --color-bg: #fff;
+    --color-bg-disabled: rgba(255, 255, 255, 0.50);
+    --border-radius-main: 16px;
+    --box-shadow-disabled: 0 0px 0px 0 rgba(0, 0, 0, 0.0);
+    --box-shadow-default: 0 2px 8px 0 rgba(0, 0, 0, 0.07);
+    --box-shadow-hovered: 0 2px 8px 0 rgba(0, 0, 0, 0.14);
+    --box-shadow-focused: 0 9px 32px 0 rgba(0, 0, 0, 0.12), 0 2px 8px 0 rgba(0, 0, 0, 0.14);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Lato', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-tertiary); /* Background for the page itself */
+}
+
+.fulcrum-chat-container {
+    width: 792px;
+    /* height: 600px; */
+    background-color: var(--color-secondary); /* Background for the page itself */
+    border-radius: var(--border-radius-main);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Ensures the inner content respects the border-radius */
+}
+
+/* 1. Chat History Area */
+.chat-history {
+    flex-grow: 1;
+    padding: 32px;
+    overflow-y: auto;
+    background-color: #f7f7f7; /* Large, white, empty area */
+}
+
+/* 2. Chat Footer (wraps input and disclaimer) */
+.chat-footer {
+    padding: 16px;
+    background-color: var(--color-secondary); /* Background for the page itself */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2a. Input Area */
+.input-area {
+    position: relative;
+    padding: 16px;
+    margin: 16px 0;
+    border: .5px solid #C7C7C7;
+    border-radius: 16px;
+    height: 72px; /* Gives the box a set height */
+}
+
+.connecting-state {
+    background-color: var(--color-bg-disabled);
+    box-shadow: var(--box-shadow-disabled);
+
+    .input-text {
+      color: var(--color-text-disabled);
+  }
+}
+
+.disabled-state {
+    background-color: var(--color-bg);
+    box-shadow: var(--box-shadow-default);
+    
+    .input-text {
+      color: var(--color-text-secondary);
+  }
+}
+
+.default-state {
+    background-color: var(--color-bg);
+    box-shadow: var(--box-shadow-default);
+    
+    .input-text {
+      color: var(--color-text-disabled);
+  }
+}
+
+.hover-state {
+    background-color: var(--color-bg);
+    box-shadow: var(--box-shadow-hovered);
+
+    .input-text {
+      color: var(--color-text-disabled);
+  }
+}
+
+.focused-state {
+    background-color: var(--color-bg);
+    box-shadow: var(--box-shadow-focused);
+
+    .input-text {
+      color: var(--color-text-secondary);
+  }
+}
+
+.typing-state {
+    background-color: var(--color-bg);
+    box-shadow: var(--box-shadow-focused);
+
+    .input-text {
+      color: var(--color-text-primary);
+  }
+}
+
+/* Style for the "Connecting..." text */
+.input-area .input-text {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-size: 16px;
+}
+
+/* 2b. Disclaimer Text */
+.disclaimer {
+    font-size: 12px;
+    color: var(--color-text-disabled);
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 5px; /* Ensures space from the bottom edge */
+}
+
+/* 2c. The CSS Loading Spinner */
+.spinner {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    padding: 8px;
+}
+
+.send-disabled,
+.send-enabled {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    padding: 8px
+}
+
+/* Spinner Animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
